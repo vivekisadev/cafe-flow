@@ -1026,12 +1026,10 @@
               const name = item
                 .querySelector(".card-front h3")
                 .textContent.toLowerCase();
-              const desc = item
-                .querySelector(".card-front p")
-                .textContent.toLowerCase();
-              const ingredients = item
-                .querySelector(".card-back p")
-                .textContent.toLowerCase();
+              const cardBackPs = item.querySelectorAll(".card-back p");
+              const desc = cardBackPs[0] ? cardBackPs[0].textContent.toLowerCase() : "";
+              const ingredients = cardBackPs[1] ? cardBackPs[1].textContent.toLowerCase() : "";
+
               item.style.display =
                 name.includes(term) ||
                 desc.includes(term) ||
@@ -1125,7 +1123,7 @@
               <h3>Order Summary</h3>
               <p>Subtotal: ₹${subtotal.toFixed(2)}</p>
               <p>Tax: ₹${tax.toFixed(2)}</p>
-              <p>Total: $${total.toFixed(2)}</p>
+              <p>Total: ₹${total.toFixed(2)}</p>
               <button class="add-to-cart" onclick="placeOrder()">Place Order</button>
             </div>
           </div>
