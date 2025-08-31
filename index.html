@@ -939,15 +939,11 @@
       }
 
       // ---------- Init (fix for DOMContentLoaded timing) ----------
-      (function init() {
+      document.addEventListener("DOMContentLoaded", function () {
         loadState();
         displayTableNumber();
-        if (document.readyState === "loading") {
-          document.addEventListener("DOMContentLoaded", () => showPage("menu"));
-        } else {
-          showPage("menu");
-        }
-      })();
+        showPage("menu");
+      });
 
       // ---------- Routing ----------
       function showPage(page) {
